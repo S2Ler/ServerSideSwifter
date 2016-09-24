@@ -25,85 +25,10 @@
 
 import Foundation
 
-#if os(iOS)
-    import UIKit
-    import SafariServices
-#else
-    import AppKit
-#endif
-
 public extension Swifter {
     
     public typealias TokenSuccessHandler = (Credential.OAuthAccessToken?, URLResponse) -> Void
-    
-    /**
-     Begin Authorization with a Callback URL.
-     - OS X only
-     */
-    #if os(OSX)
-    public func authorize(with callbackURL: URL, success: TokenSuccessHandler?, failure: FailureHandler? = nil) {
-        self.postOAuthRequestToken(with: callbackURL, success: { token, response in
-            var requestToken = token!
-            
-            NotificationCenter.default.addObserver(forName: .SwifterCallbackNotification, object: nil, queue: .main) { notification in
-                NotificationCenter.default.removeObserver(self)
-                let url = notification.userInfo![CallbackNotification.optionsURLKey] as! URL
-                let parameters = url.query!.queryStringParameters
-                requestToken.verifier = parameters["oauth_verifier"]
-                
-                    self.postOAuthAccessToken(with: requestToken, success: { accessToken, response in
-                    self.client.credential = Credential(accessToken: accessToken!)
-                    success?(accessToken!, response)
-                    }, failure: failure)
-            }
-            
-            let authorizeURL = URL(string: "oauth/authorize", relativeTo: TwitterURL.oauth.url)
-            let queryURL = URL(string: authorizeURL!.absoluteString + "?oauth_token=\(token!.key)")!
-            NSWorkspace.shared().open(queryURL)
-        }, failure: failure)
-    }
-    #endif
-    
-    /**
-     Begin Authorization with a Callback URL
-     
-     - Parameter presentFromViewController: The viewController used to present the SFSafariViewController.
-     The UIViewController must inherit SFSafariViewControllerDelegate
-     
-     */
-    
-    #if os(iOS)
-    public func authorize(with callbackURL: URL, presentFrom presentingViewController: UIViewController? , success: TokenSuccessHandler?, failure: FailureHandler? = nil) {
-        self.postOAuthRequestToken(with: callbackURL, success: { token, response in
-            var requestToken = token!
-            NotificationCenter.default.addObserver(forName: .SwifterCallbackNotification, object: nil, queue: .main) { notification in
-                NotificationCenter.default.removeObserver(self)
-                presentingViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
-                let url = notification.userInfo![CallbackNotification.optionsURLKey] as! URL
-                
-                let parameters = url.query!.queryStringParameters
-                requestToken.verifier = parameters["oauth_verifier"]
-                
-                self.postOAuthAccessToken(with: requestToken, success: { accessToken, response in
-                    self.client.credential = Credential(accessToken: accessToken!)
-                    success?(accessToken!, response)
-                    }, failure: failure)
-            }
-            
-            let authorizeURL = URL(string: "oauth/authorize", relativeTo: TwitterURL.oauth.url)
-            let queryURL = URL(string: authorizeURL!.absoluteString + "?oauth_token=\(token!.key)")!
-            
-            if #available(iOS 9.0, *) , let delegate = presentingViewController as? SFSafariViewControllerDelegate {
-                let safariView = SFSafariViewController(url: queryURL)
-                safariView.delegate = delegate
-                presentingViewController?.present(safariView, animated: true, completion: nil)
-            } else {
-                UIApplication.shared.openURL(queryURL)
-            }
-        }, failure: failure)
-    }
-    #endif
-    
+        
     public class func handleOpenURL(_ url: URL) {
         let notification = Notification(name: .SwifterCallbackNotification, object: nil, userInfo: [CallbackNotification.optionsURLKey: url])
         NotificationCenter.default.post(notification)
