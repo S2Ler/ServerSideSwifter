@@ -8,20 +8,15 @@
 
 import XCTest
 
-@testable import SwifteriOS
+@testable import Swifter
 
 class String_SwifterTests: XCTestCase {
-    
-    
-    override func setUp() {
 
+    override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
@@ -58,14 +53,12 @@ class String_SwifterTests: XCTestCase {
         ]
         
         for (input, output) in shouldBeTheSameAfterEncoding {
-            XCTAssertEqual(input.urlEncodedStringWithEncoding(), output, input)
+            XCTAssertEqual(input.urlEncodedString(), output, input)
         }
-
         
         for (input, output) in shouldBeDifferentAfterEcoding {
-            XCTAssertNotEqual(input.urlEncodedStringWithEncoding(), output)
+            XCTAssertNotEqual(input.urlEncodedString(), output)
         }
     }
-
-
+    
 }
