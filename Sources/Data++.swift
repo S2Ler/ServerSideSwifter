@@ -12,10 +12,9 @@ import Foundation
 extension Data {
     
     var rawBytes: [UInt8] {
-        let count = self.count / MemoryLayout<UInt8>.size
-        var bytesArray = [UInt8](repeating: 0, count: count)
-        (self as NSData).getBytes(&bytesArray, length:count * MemoryLayout<UInt8>.size)
-        return bytesArray
+        return self.withUnsafeBytes {
+            Array(UnsafeBufferPointer<UInt8>(start: $0, count: self.count/MemoryLayout<UInt8>.size))
+        }
     }
     
     init(bytes: [UInt8]) {
