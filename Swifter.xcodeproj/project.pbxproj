@@ -17,7 +17,6 @@
 		__src_cc_ref_Sources/SHA1.swift /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SHA1.swift /* SHA1.swift */; };
 		"__src_cc_ref_Sources/String++.swift" /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Sources/String++.swift" /* String++.swift */; };
 		__src_cc_ref_Sources/Swifter.swift /* Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Swifter.swift /* Swifter.swift */; };
-		__src_cc_ref_Sources/SwifterAccountsClient.swift /* SwifterAccountsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SwifterAccountsClient.swift /* SwifterAccountsClient.swift */; };
 		__src_cc_ref_Sources/SwifterAppOnlyClient.swift /* SwifterAppOnlyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SwifterAppOnlyClient.swift /* SwifterAppOnlyClient.swift */; };
 		__src_cc_ref_Sources/SwifterAuth.swift /* SwifterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SwifterAuth.swift /* SwifterAuth.swift */; };
 		__src_cc_ref_Sources/SwifterClientProtocol.swift /* SwifterClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SwifterClientProtocol.swift /* SwifterClientProtocol.swift */; };
@@ -67,7 +66,6 @@
 		__PBXFileRef_Sources/SHA1.swift /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Sources/String++.swift" /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Swifter.swift /* Swifter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifter.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/SwifterAccountsClient.swift /* SwifterAccountsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterAccountsClient.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/SwifterAppOnlyClient.swift /* SwifterAppOnlyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterAppOnlyClient.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/SwifterAuth.swift /* SwifterAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterAuth.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/SwifterClientProtocol.swift /* SwifterClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterClientProtocol.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				__PBXFileRef_Sources/SHA1.swift /* SHA1.swift */,
 				"__PBXFileRef_Sources/String++.swift" /* String++.swift */,
 				__PBXFileRef_Sources/Swifter.swift /* Swifter.swift */,
-				__PBXFileRef_Sources/SwifterAccountsClient.swift /* SwifterAccountsClient.swift */,
 				__PBXFileRef_Sources/SwifterAppOnlyClient.swift /* SwifterAppOnlyClient.swift */,
 				__PBXFileRef_Sources/SwifterAuth.swift /* SwifterAuth.swift */,
 				__PBXFileRef_Sources/SwifterClientProtocol.swift /* SwifterClientProtocol.swift */,
@@ -298,7 +295,6 @@
 				__src_cc_ref_Sources/SHA1.swift /* SHA1.swift in Sources */,
 				"__src_cc_ref_Sources/String++.swift" /* String++.swift in Sources */,
 				__src_cc_ref_Sources/Swifter.swift /* Swifter.swift in Sources */,
-				__src_cc_ref_Sources/SwifterAccountsClient.swift /* SwifterAccountsClient.swift in Sources */,
 				__src_cc_ref_Sources/SwifterAppOnlyClient.swift /* SwifterAppOnlyClient.swift in Sources */,
 				__src_cc_ref_Sources/SwifterAuth.swift /* SwifterAuth.swift in Sources */,
 				__src_cc_ref_Sources/SwifterClientProtocol.swift /* SwifterClientProtocol.swift in Sources */,

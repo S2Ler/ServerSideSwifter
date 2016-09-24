@@ -24,7 +24,6 @@
 //
 
 import Foundation
-import Accounts
 
 public class Credential {
 
@@ -55,14 +54,8 @@ public class Credential {
     }
 
     public internal(set) var accessToken: OAuthAccessToken?
-    public internal(set) var account: ACAccount?
 
     public init(accessToken: OAuthAccessToken) {
         self.accessToken = accessToken
     }
-
-    public init(account: ACAccount) {
-        self.account = account
-    }
-
 }

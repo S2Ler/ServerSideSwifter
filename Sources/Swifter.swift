@@ -24,7 +24,6 @@
 //
 
 import Foundation
-import Accounts
 
 extension Notification.Name {
     static let SwifterCallbackNotification: Notification.Name = Notification.Name(rawValue: "SwifterCallbackNotificationName")
@@ -84,10 +83,6 @@ public class Swifter {
 
     public init(consumerKey: String, consumerSecret: String, oauthToken: String, oauthTokenSecret: String) {
         self.client = OAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret , accessToken: oauthToken, accessTokenSecret: oauthTokenSecret)
-    }
-
-    public init(account: ACAccount) {
-        self.client = AccountsClient(account: account)
     }
 
     deinit {
