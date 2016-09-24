@@ -24,6 +24,7 @@
 //
 
 import Foundation
+import Dispatch
 
 extension Notification.Name {
     static let SwifterCallbackNotification: Notification.Name = Notification.Name(rawValue: "SwifterCallbackNotificationName")
