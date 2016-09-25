@@ -26,4 +26,8 @@ class SHA1Tests: XCTestCase {
 
         XCTAssertEqual(sha1Result, expected)
     }
+
+    static let allTests =  [
+        ("testSHA1", testSHA1)
+    ]
 }

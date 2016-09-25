@@ -60,5 +60,8 @@ class String_SwifterTests: XCTestCase {
             XCTAssertNotEqual(input.urlEncodedString(), output)
         }
     }
-    
+
+    static let allTests =  [
+        ("testEncoding", testEncoding)
+    ]
 }
