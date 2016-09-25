@@ -1,70 +1,42 @@
 //
 //  SHA1.swift
-//  OAuthSwift
+//  CryptoSwift
 //
-//  Created by Dongri Jin on 1/28/15.
-//  Copyright (c) 2015 Dongri Jin. All rights reserved.
+//  Created by Marcin Krzyzanowski on 16/08/14.
+//  Copyright (c) 2014 Marcin Krzyzanowski. All rights reserved.
 //
 
-import Foundation
+final class SHA1 {
+    static let digestSize: Int = 20 // 160 / 8
+    private let message: Array<UInt8>
 
-struct SHA1 {
-    
-    var message: Data
-    
-    /** Common part for hash calculation. Prepare header data. */
-    func prepare(_ len:Int = 64) -> Data {
-        var tmpMessage: Data = self.message
-        
-        // Step 1. Append Padding Bits
-        tmpMessage.append([0x80]) // append one bit (Byte with one bit) to message
-        
-        // append "0" bit until message length in bits ≡ 448 (mod 512)
-        while tmpMessage.count % len != (len - 8) {
-            tmpMessage.append([0x00])
-        }
-        
-        return tmpMessage
+    init(_ message: Array<UInt8>) {
+        self.message = message
     }
 
-    func calculate() -> Data {
+    private let h:Array<UInt32> = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0]
 
-        //var tmpMessage = self.prepare()
-        let len = 64
-        let h: [UInt32] = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0]
-
-        var tmpMessage: Data = self.message
-        
-        // Step 1. Append Padding Bits
-        tmpMessage.append([0x80]) // append one bit (Byte with one bit) to message
-        
-        // append "0" bit until message length in bits ≡ 448 (mod 512)
-        while tmpMessage.count % len != (len - 8) {
-            tmpMessage.append([0x00])
-        }
+    func calculate() -> Array<UInt8> {
+        var tmpMessage = bitPadding(to: self.message, blockSize: 64, allowance: 64 / 8)
 
         // hash values
         var hh = h
-        
+
         // append message length, in a 64-bit big-endian integer. So now the message length is a multiple of 512 bits.
-        tmpMessage.append((self.message.count * 8).bytes(64 / 8))
-        
+        tmpMessage += (self.message.count * 8).bytes(64 / 8)
+
         // Process the message in successive 512-bit chunks:
         let chunkSizeBytes = 512 / 8 // 64
-        var leftMessageBytes = tmpMessage.count
-        var i = 0;
-        while i < tmpMessage.count {
-            
-            let chunk = tmpMessage.subdata(in: i..<i+min(chunkSizeBytes, leftMessageBytes))
+        for chunk in BytesSequence(chunkSize: chunkSizeBytes, data: tmpMessage) {
             // break chunk into sixteen 32-bit words M[j], 0 ≤ j ≤ 15, big-endian
             // Extend the sixteen 32-bit words into eighty 32-bit words:
-            var M = [UInt32](repeating: 0, count: 80)
+            var M:Array<UInt32> = Array<UInt32>(repeating: 0, count: 80)
             for x in 0..<M.count {
                 switch (x) {
                 case 0...15:
-                    var le: UInt32 = 0
-                    let range = NSRange(location:x * MemoryLayout<UInt32>.size, length: MemoryLayout<UInt32>.size)
-                    (chunk as NSData).getBytes(&le, range: range)
+                    let start = chunk.startIndex + (x * MemoryLayout<UInt32>.size)
+                    let end = start + MemoryLayout<UInt32>.size
+                    let le = chunk[start..<end].toUInt32Array()[0]
                     M[x] = le.bigEndian
                     break
                 default:
@@ -72,15 +44,19 @@ struct SHA1 {
                     break
                 }
             }
-            
-            var A = hh[0], B = hh[1], C = hh[2], D = hh[3], E = hh[4]
-            
+
+            var A = hh[0]
+            var B = hh[1]
+            var C = hh[2]
+            var D = hh[3]
+            var E = hh[4]
+
             // Main loop
             for j in 0...79 {
-                var f: UInt32 = 0
+                var f: UInt32 = 0;
                 var k: UInt32 = 0
-                
-                switch j {
+
+                switch (j) {
                 case 0...19:
                     f = (B & C) | ((~B) & D)
                     k = 0x5A827999
@@ -100,33 +76,29 @@ struct SHA1 {
                 default:
                     break
                 }
-                
-                let temp = (rotateLeft(A,n: 5) &+ f &+ E &+ M[j] &+ k) & 0xffffffff
+
+                let temp = (rotateLeft(A, n: 5) &+ f &+ E &+ M[j] &+ k) & 0xffffffff
                 E = D
                 D = C
                 C = rotateLeft(B, n: 30)
                 B = A
                 A = temp
-                
             }
-            
+
             hh[0] = (hh[0] &+ A) & 0xffffffff
             hh[1] = (hh[1] &+ B) & 0xffffffff
             hh[2] = (hh[2] &+ C) & 0xffffffff
             hh[3] = (hh[3] &+ D) & 0xffffffff
             hh[4] = (hh[4] &+ E) & 0xffffffff
-			
-            i = i + chunkSizeBytes
-            leftMessageBytes -= chunkSizeBytes
         }
-        
+
         // Produce the final hash value (big-endian) as a 160 bit number:
-        let mutableBuff = NSMutableData()
+        var result = Array<UInt8>()
+        result.reserveCapacity(hh.count / 4)
         hh.forEach {
-            var i = $0.bigEndian
-            mutableBuff.append(&i, length: MemoryLayout<UInt32>.size)
+            let item = $0.bigEndian
+            result += [UInt8(item & 0xff), UInt8((item >> 8) & 0xff), UInt8((item >> 16) & 0xff), UInt8((item >> 24) & 0xff)]
         }
-        
-        return mutableBuff as Data
+        return result
     }
 }

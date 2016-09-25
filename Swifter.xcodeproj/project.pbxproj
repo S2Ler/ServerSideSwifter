@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		094D764A1D967E9300C980FF /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D76491D967E9300C980FF /* Collection+Extensions.swift */; };
+		094D764D1D96D7A100C980FF /* SHA1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D764B1D9681A900C980FF /* SHA1Tests.swift */; };
+		094D764F1D97989A00C980FF /* BytesSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D764E1D97989A00C980FF /* BytesSequence.swift */; };
 		_LinkFileRef_Swifter_via_SwifterTests /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Swifter" /* Swifter.framework */; };
 		"__src_cc_ref_Sources/Data++.swift" /* Data++.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Sources/Data++.swift" /* Data++.swift */; };
 		"__src_cc_ref_Sources/Dictionary++.swift" /* Dictionary++.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Sources/Dictionary++.swift" /* Dictionary++.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		094D76491D967E9300C980FF /* Collection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
+		094D764B1D9681A900C980FF /* SHA1Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA1Tests.swift; sourceTree = "<group>"; };
+		094D764E1D97989A00C980FF /* BytesSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytesSequence.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Sources/Data++.swift" /* Data++.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = "Data++.swift"; sourceTree = "<group>"; tabWidth = 4; };
 		"__PBXFileRef_Sources/Dictionary++.swift" /* Dictionary++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary++.swift"; sourceTree = "<group>"; };
@@ -199,6 +205,8 @@
 				__PBXFileRef_Sources/SwifterUsers.swift /* SwifterUsers.swift */,
 				"__PBXFileRef_Sources/URL++.swift" /* URL++.swift */,
 				__PBXFileRef_Sources/Utils.swift /* Utils.swift */,
+				094D76491D967E9300C980FF /* Collection+Extensions.swift */,
+				094D764E1D97989A00C980FF /* BytesSequence.swift */,
 			);
 			name = Swifter;
 			path = Sources;
@@ -208,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				"__PBXFileRef_Tests/SwifterTests/String+SwifterTests.swift" /* String+SwifterTests.swift */,
+				094D764B1D9681A900C980FF /* SHA1Tests.swift */,
 			);
 			name = SwifterTests;
 			path = Tests/SwifterTests;
@@ -297,6 +306,7 @@
 				__src_cc_ref_Sources/SHA1.swift /* SHA1.swift in Sources */,
 				"__src_cc_ref_Sources/String++.swift" /* String++.swift in Sources */,
 				__src_cc_ref_Sources/Swifter.swift /* Swifter.swift in Sources */,
+				094D764A1D967E9300C980FF /* Collection+Extensions.swift in Sources */,
 				__src_cc_ref_Sources/SwifterAppOnlyClient.swift /* SwifterAppOnlyClient.swift in Sources */,
 				__src_cc_ref_Sources/SwifterAuth.swift /* SwifterAuth.swift in Sources */,
 				__src_cc_ref_Sources/SwifterClientProtocol.swift /* SwifterClientProtocol.swift in Sources */,
@@ -309,6 +319,7 @@
 				__src_cc_ref_Sources/SwifterLists.swift /* SwifterLists.swift in Sources */,
 				__src_cc_ref_Sources/SwifterMessages.swift /* SwifterMessages.swift in Sources */,
 				__src_cc_ref_Sources/SwifterOAuthClient.swift /* SwifterOAuthClient.swift in Sources */,
+				094D764F1D97989A00C980FF /* BytesSequence.swift in Sources */,
 				__src_cc_ref_Sources/SwifterPlaces.swift /* SwifterPlaces.swift in Sources */,
 				__src_cc_ref_Sources/SwifterSavedSearches.swift /* SwifterSavedSearches.swift in Sources */,
 				__src_cc_ref_Sources/SwifterSearch.swift /* SwifterSearch.swift in Sources */,
@@ -329,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				094D764D1D96D7A100C980FF /* SHA1Tests.swift in Sources */,
 				"__src_cc_ref_Tests/SwifterTests/String+SwifterTests.swift" /* String+SwifterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
