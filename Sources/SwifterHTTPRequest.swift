@@ -25,6 +25,7 @@
 
 import Foundation
 import Dispatch
+import CoreFoundation
 
 public enum HTTPMethodType: String {
     case OPTIONS
