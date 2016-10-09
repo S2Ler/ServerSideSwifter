@@ -27,6 +27,12 @@ import Foundation
 import Dispatch
 import CoreFoundation
 
+private let requestsQueue: OperationQueue = {
+  let q = OperationQueue()
+  q.isSuspended = false
+  return q
+}()
+
 public enum HTTPMethodType: String {
     case OPTIONS
     case GET
@@ -155,14 +161,10 @@ public class HTTPRequest: NSObject, URLSessionDataDelegate {
             }
         }
 
-        DispatchQueue.main.async {
-            let session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
-            self.dataTask = session.dataTask(with: self.request!)
-            self.dataTask.resume()
-            
-            #if os(iOS)
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            #endif
+        DispatchQueue.global().async {
+          let session = URLSession(configuration: .default, delegate: self, delegateQueue: requestsQueue)
+          self.dataTask = session.dataTask(with: self.request!)
+          self.dataTask.resume()
         }
     }
 
