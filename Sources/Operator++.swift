@@ -1,11 +1,3 @@
-//
-//  Operator+Swifter.swift
-//  Swifter
-//
-//  Created by Andy Liang on 2016-02-19.
-//  Copyright © 2016 Matt Donnelly. All rights reserved.
-//
-
 import Foundation
 
 /// If `rhs` is not `nil`, assign it to `lhs`.

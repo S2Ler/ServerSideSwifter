@@ -1,8 +1,4 @@
-<p align="center" >
-  <img src="swifter_logo.png" alt="Swifter" title="Swifter" width="563">
-</p>
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ## Getting Started
 
 ### Installation
@@ -119,4 +115,10 @@ In Twitter REST API v1.1, each client application must authenticate itself with 
 
 # License
 
-Swifter is licensed under the MIT License. See the LICENSE file for more information.
+ServerSideSwifter is licensed under the MIT License. See the LICENSE file for more information.
+
+The project is based on [Swifter](https://github.com/mattdonnelly/Swifter)
+
+# Acknowledgements
+
+[CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)

@@ -1,11 +1,3 @@
-//
-//  String+SwifterTests.swift
-//  Swifter
-//
-//  Created by Lewis Smith on 20/02/2016.
-//  Copyright © 2016 Matt Donnelly. All rights reserved.
-//
-
 import XCTest
 
 @testable import Swifter

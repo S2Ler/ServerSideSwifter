@@ -1,11 +1,3 @@
-//
-//  SHA1Tests.swift
-//  Swifter
-//
-//  Created by Alexander Belyavskiy on 9/24/16.
-//
-//
-
 import Foundation
 
 import XCTest

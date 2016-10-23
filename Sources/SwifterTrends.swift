@@ -1,11 +1,3 @@
-//
-//  SwifterTrends.swift
-//  Swifter
-//
-//  Created by Matt Donnelly on 21/06/2014.
-//  Copyright (c) 2014 Matt Donnelly. All rights reserved.
-//
-
 import Foundation
 
 public extension Swifter {

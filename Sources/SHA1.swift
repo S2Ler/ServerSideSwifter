@@ -1,11 +1,3 @@
-//
-//  SHA1.swift
-//  CryptoSwift
-//
-//  Created by Marcin Krzyzanowski on 16/08/14.
-//  Copyright (c) 2014 Marcin Krzyzanowski. All rights reserved.
-//
-
 final class SHA1 {
     static let digestSize: Int = 20 // 160 / 8
     private let message: Array<UInt8>

@@ -1,11 +1,3 @@
-//
-//  SwifterTag.swift
-//  Swifter
-//
-//  Created by Andy on 7/30/16.
-//  Copyright © 2016 Matt Donnelly. All rights reserved.
-//
-
 import Foundation
 
 public enum UserTag {
